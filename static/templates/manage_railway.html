@@ -137,7 +137,7 @@
     <a><p>Доступные функции</p></a>
     <a href="{% url 'manage_railway' railway.id %}"><div class="colors">Информация о дороге</div></a>
     <a href="{% url 'rules_in_game' %}">Правила</a><br />
-    <a href="{% url 'room_railways_graph' room.id %}">Посмотреть графики</a>
+    <a href="{% url 'room_railways_graph' room.id %}">Статистика</a>
 </div>
 <div class="container">
     <div class="tit">{{ railway.name }}, комната {{ room.number }}</div>
@@ -154,7 +154,7 @@
 
     <p></p>
     <!-- Добавляем кнопку для перехода на страницу с графиками -->
-
+    
 
     <!-- Раздел с показателями -->
     {% if calculated %}
@@ -184,6 +184,12 @@
             {% endfor %}
         </ul>
     </div>
+    <div class="indicator-section">
+    <h2 class="indicator-list">Общий балл:</h2>
+    <ul class="indicator-list">
+        <li>{{ railway.total_score }}</li>
+    </ul>
+</div>
     {% endif %}
 </div>
 

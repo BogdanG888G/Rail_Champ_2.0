@@ -14,9 +14,9 @@
 <body>
     <div class="menu">
         <a><p>Доступные функции</p></a>
-        <a href="{% url 'manage_railway' railway_id={{railway.id}} %}">Информация о дороге</a>
+        <a href="{% url 'manage_railway' railway_id=railway.id %}">Информация о дороге</a>
         <a href="{% url 'rules_in_game' %}"><div class="colors">Правила</div></a> <br />
-        <a href="{% url 'room_railways_graph' room.id %}">Посмотреть графики</a>
+        <a href="{% url 'game_stat' %}">Статистика</a>
     </div>
     <div class="tit">Описание игры</div>
     <div class="txt1">

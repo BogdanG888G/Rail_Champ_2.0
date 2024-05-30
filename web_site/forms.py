@@ -17,28 +17,28 @@ class RailwayChoiceForm(forms.Form):
 
 class RailwayManageForm(forms.ModelForm):
     new_gryzovye_vagoni = forms.IntegerField(
-        label='Новые грузовые вагоны',
+        label='Новые грузовые вагоны (штук)',
         min_value=0, max_value=2000, required=True,
         widget=forms.NumberInput(attrs={
             'type': 'range', 'step': '1', 'value': '0', 'style': 'width: 320px;'
         })
     )
     new_pass_vagoni = forms.IntegerField(
-        label='Новые пассажирские вагоны',
+        label='Новые пассажирские вагоны (штук)',
         min_value=0, max_value=2000, required=True,
         widget=forms.NumberInput(attrs={
             'type': 'range', 'step': '1', 'value': '0', 'style': 'width: 320px;'
         })
     )
-    new_lokomotivi = forms.IntegerField(
-        label='Новые локомотивы',
-        min_value=0, max_value=2000, required=True,
-        widget=forms.NumberInput(attrs={
-            'type': 'range', 'step': '1', 'value': '0', 'style': 'width: 320px;'
-        })
-    )
+    #new_lokomotivi = forms.IntegerField(
+    #    label='Новые локомотивы',
+    #    min_value=0, max_value=2000, required=True,
+    #    widget=forms.NumberInput(attrs={
+    #        'type': 'range', 'step': '1', 'value': '0', 'style': 'width: 320px;'
+    #    })
+    #)
     new_zarplata_sotrudnikov = forms.IntegerField(
-        label='Зарплата сотрудников',
+        label='Зарплата сотрудников (тысячи рублей)',
         min_value=0, required=True,
         widget=forms.NumberInput(attrs={
             'style': 'background-color: rgb(2, 67, 143); border-radius: 10px; width: 320px; padding: 10px; color: white; font-size: 15px; margin-top: 10px;'

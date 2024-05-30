@@ -684,36 +684,36 @@ def calculate_key_indicators(railway):
     for key, value in difference.items():
         # Проверяем условия и присваиваем соответствующий весовой коэффициент
         if key == 'Выручка от грузов':
-            weight = 0.1 if value >= 1 else -0.1
+            weight = 0.1 * uniform(1, 1.10) if value >= 1 else -0.1
         elif key == 'Себестоимость':
-            weight = 0.1 if value <= 1 else -0.1
+            weight = 0.1 * uniform(1, 1.10) if value <= 1 else -0.1
         elif key == 'Финансы по прочим видам деятельности':
-            weight = 0.05 if value >= 1 else -0.05
+            weight = 0.05 * uniform(1, 1.10) if value >= 1 else -0.05
         elif key == 'Дебиторка':
-            weight = 0.05 if value <= 1 else -0.05
+            weight = 0.05 * uniform(1, 1.10) if value <= 1 else -0.05
         elif key == 'Кредиторка':
-            weight = 0.025 if value <= 1 else -0.025
+            weight = 0.025 * uniform(1, 1.10) if value <= 1 else -0.025
         elif key == 'Погрузка грузов':
-            weight = 0.1 if value >= 1 else -0.1
+            weight = 0.1 * uniform(1, 1.10) if value >= 1 else -0.1
         elif key == 'Расписание пассажирских поездов':
-            weight = 0.05 if value >= 1 else -0.05
+            weight = 0.05 * uniform(1, 1.10) if value >= 1 else -0.05
         elif key == 'Расписание пригородных поездов':
-            weight = 0.05 if value >= 1 else -0.05
+            weight = 0.05 * uniform(1, 1.10) if value >= 1 else -0.05
         elif key == 'Доля грузовых отправок':
-            weight = 0.05 if value >= 1 else -0.05
+            weight = 0.05 * uniform(1, 1.10) if value >= 1 else -0.05
         elif key == 'Средняя скорость пассажирского поезда':
-            weight = 0.025 if value >= 1 else -0.025
+            weight = 0.025 * uniform(1, 1.10) if value >= 1 else -0.025
         elif key == 'Средняя производительность локомотива/грузового поезда':
-            weight = 0.05 if value >= 1 else -0.05
+            weight = 0.05 * uniform(1, 1.10) if value >= 1 else -0.05
         elif key == 'Время задержки':
-            weight = 0.05 if value <= 1 else -0.05
+            weight = 0.05 * uniform(1, 1.10) if value <= 1 else -0.05
         elif key == 'Безопасность':
-            weight = 0.25 if value <= 1 else -0.25
+            weight = 0.25 * uniform(1, 1.10) if value <= 1 else -0.25
         elif key == 'Укомплектованность штата':
-            weight = 0.025 if value >= 1 else -0.025
+            weight = 0.025 * uniform(1, 1.10) if value >= 1 else -0.025
 
         # Умножаем разницу на соответствующий весовой коэффициент
-        weighted_difference[key] = value * weight
+        weighted_difference[key] = value * weight * 100
 
     total_score = sum(weighted_difference.values())
     railway.total_score = total_score
@@ -783,6 +783,7 @@ def manage_railway(request, railway_id):
         'regular_indicators': regular_indicators,
         'difference': difference,
         'current_move': current_move,
+
     })
 
 
