@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Графики железных дорог</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Графики железных дорог в комнате: {{ room.name }}</h1>
+
+    <div>
+        {{ bar_graph_div|safe }}
+    </div>
+
+    <a href="{% url 'manage_railway' room.id %}">
+        <button>Вернуться назад</button>
+    </a>
+</body>
+</html>

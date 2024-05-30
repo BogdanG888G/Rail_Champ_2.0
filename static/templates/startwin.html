@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'css/startwin.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Page 2</title>
+  </head>
+  <body>
+    <div class="menu">
+      <a><p>Навигация</p></a>
+      <a href="{% url 'start'%}"><div class="colors">Главная страница</div></a>
+      <a href="{% url 'rules' %}">Правила</a>
+      <a href="{% url 'check_room_existence' %}">Начать играть</a>
+    </div>
+
+    <div class="tit">Добро пожаловать в "Rail Champ"!</div>
+
+    <div class="txt1">
+      Приветствуем вас в увлекательном мире Транспортной игры, где вы станете
+      мастером транспортных маршрутов и построите эффективную транспортную
+      систему!
+    </div>
+
+    <div class="txt2">
+      <p>
+        В этой игре вам предстоит прокладывать маршруты, управлять расписаниями,
+        оптимизировать пассажиропотоки и решать различные транспортные задачи.
+        Ваша цель - создать эффективную и удобную транспортную инфраструктуру
+        для удовлетворения потребностей городского населения.
+      </p>
+      <p>
+        Готовы ли вы взять на себя вызов и стать гуру транспортных систем?
+        Давайте начнем игру и проверим ваше мастерство в области транспортного
+        планирования!
+      </p>
+    </div>
+    <div class="rail">Железные дороги, присутствующие в игре</div>
+    <div class="tab">
+      <table border="2" cellpadding="15" class="tabs">
+        <thead class="tabss">
+          <th>№</th>
+          <th>Название дороги</th>
+          <th>Год основания</th>
+          <th>Длина (км)</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Восточно-Сибирская</td>
+            <td>1934</td>
+            <td>3876</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Горьковская</td>
+            <td>1961</td>
+            <td>5296</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Дальневосточная</td>
+            <td>1897</td>
+            <td>6826</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Забайкальская</td>
+            <td>1900</td>
+            <td>3336</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Западно-Сибирская</td>
+            <td>1896</td>
+            <td>6000</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Калининградская</td>
+            <td>1992</td>
+            <td>667</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Красноярская</td>
+            <td>1936</td>
+            <td>3157</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Куйбышевская</td>
+            <td>1936</td>
+            <td>11502</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>Московская</td>
+            <td>1959</td>
+            <td>8984</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>Октябрьская</td>
+            <td>1923</td>
+            <td>10378</td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td>Приволжская</td>
+            <td>1953</td>
+            <td>4260</td>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td>Свердловская</td>
+            <td>1878</td>
+            <td>7152</td>
+          </tr>
+          <tr>
+            <td>13</td>
+            <td>Северная</td>
+            <td>1953</td>
+            <td>5956</td>
+          </tr>
+          <tr>
+            <td>14</td>
+            <td>Северо-Кавказская</td>
+            <td>1922</td>
+            <td>6311</td>
+          </tr>
+          <tr>
+            <td>15</td>
+            <td>Юго-Восточная</td>
+            <td>1893</td>
+            <td>4189</td>
+          </tr>
+          <tr>
+            <td>16</td>
+            <td>Южно-Уральская</td>
+            <td>1934</td>
+            <td>7567</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="instruction">
+      Чтобы начать играть, нажмите на кнопку меню слева, выберите нужный вам
+      пункт и нажмите играть!
+    </div>
+    <div class="develop">
+      <p class="role">В главных ролях</p>
+      <p class="techlid">G_GBogdanG_G, лучший техлид</p>
+      <p class="disain">YoungP_Yozka, лучший дизайнер</p>
+      <p class="analit">Дильназ, лучший аналитик</p>
+      <p class="organizat">Ferrumnyak, лучший организатор</p>
+      <p class="teamlid">anton_nemykin, лучший тимлид</p>
+    </div>
+  </body>
+</html>

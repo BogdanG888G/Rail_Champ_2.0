@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Railways in Room {{ room.number }}</title>
+</head>
+<body>
+    <h1>Railways in Room {{ room.number }}</h1>
+    <ul>
+        {% for railway in railways %}
+            <li>{{ railway.name }}: {{ railway.budget }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

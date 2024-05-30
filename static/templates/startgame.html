@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'css/startgame.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Page 2</title>
+  </head>
+  <body>
+    <div class="menu">
+      <a><p>Навигация</p></a>
+      <a href="startwin.html">Главная страница</a>
+      <a href="rules.html">Правила</a>
+      <a href="startgame.html"><div class="colors">Начать играть</div></a>
+    </div>
+    <div class="num-room">Введите номер комнаты, чтобы создать/войти</div>
+    <div class="room">
+      <input type="text" />
+      <a href="road_choise.html" class="btn">Подтвердить</a>
+    </div>
+    <div class="txt">Доступные</div>
+    <table border="2" cellpadding="15" class="tabs">
+      <thead class="tabss">
+        <th>№</th>
+        <th>Номер комнаты</th>
+        <th>Занято</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>123</td>
+          <td>2/16</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>never gonna give you up</td>
+          <td>2/16</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Available Railways</title>
+</head>
+<body>
+<h1>Доступные железные дороги</h1>
+<p>Для комнаты с номером: {{ room_number }}</p>
+<ul>
+{% for railway in available_railways %}
+    <li>{{ railway.key }} - {{ railway.name }}</li>
+{% empty %}
+    <li>Нет доступных дорог</li>
+{% endfor %}
+</ul>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'css/startgame.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Page 2</title>
+  </head>
+  <body>
+    <div class="menu">
+      <a><p>Навигация</p></a>
+      <a href="{% url 'start'%}">Главная страница</a>
+      <a href="{% url 'rules' %}"><div class="colors">Правила</div></a>
+      <a href="{% url 'check_room_existence' %}">Начать играть</a>
+    </div>
+    <div class="num-room">Введите номер комнаты, чтобы создать/войти</div>
+    <div class="room">
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" id="room_number" name="room_number" required>
+        <button type="submit" class="btn">Подтвердить</button>
+    </form>
+    </div>
+    <div class="txt">Доступные</div>
+    <table border="2" cellpadding="15" class="tabs">
+        <thead class="tabss">
+                <th>ID</th>
+                <th>Номер комнаты</th>
+                <th>Дорог занято</th>
+        </thead>
+        <tbody>
+            {% for data in room_data %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ data.room.number }}</td>
+                    <td>{{ data.occupied_count }}/{{ 16 }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

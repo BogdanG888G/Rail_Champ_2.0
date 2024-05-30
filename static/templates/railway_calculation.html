@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Результаты расчётов железной дороги</title>
+</head>
+<body>
+    <h1>Результаты расчётов железной дороги</h1>
+
+    {% if results %}
+        <h2>Результаты расчётов:</h2>
+        <ul>
+            <li>Выручка от грузов: {{ results.virychka_ot_gryzov }}</li>
+            <li>Себестоимость: {{ results.sebestoimost }}</li>
+            <li>Финансы по прочим: {{ results.financi_po_prochim }}</li>
+            <li>Дебиторка: {{ results.debitorka }}</li>
+            <li>Кредиторка: {{ results.kreditorka }}</li>
+            <li>Погрузка грузов: {{ results.pogruzka_gryzov }}</li>
+            <li>Расписание пассажирских поездов: {{ results.raspisanie_pass_poesdov }}</li>
+            <li>Доля грузовых отправок: {{ results.dolya_gryzovix_otpravok }}</li>
+            <li>Средняя скорость: {{ results.average_speed }}</li>
+            <li>Средняя производительность локомотивов: {{ results.average_proivoditelnost_loko }}</li>
+            <li>Время задержки: {{ results.time_zadershka }}</li>
+            <li>Безопасность: {{ results.besopasnost }}</li>
+        </ul>
+
+        <a href="{% url 'manage_railway' railway_id=railway_id %}">Вернуться назад</a>
+    {% endif %}
+</body>
+</html>

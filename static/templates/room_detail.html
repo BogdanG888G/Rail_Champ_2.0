@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Room Detail</title>
+</head>
+<body>
+    <h1>Room Details</h1>
+    <p>Room Number: {{ room.number }}</p>
+    <p>Occupied Railways: {{ occupied_railways.count }}/{{ room.railways_set.all.count }}</p>
+    <h2>Railways in Room {{ room.number }}</h2>
+    <ul>
+        {% for railway in occupied_railways %}
+            <li>{{ railway.name }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

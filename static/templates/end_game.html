@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Конец Игры</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Конец Игры</h1>
+    <div>
+        <h2>График изменения бюджета для дороги {{railway.name}}, в комнате {{room.number}}</h2>
+        {{ graph_div|safe }}
+    </div>
+<div>
+        <a href="{% url 'start' %}">
+            <button>Вернуться на главную</button>
+        </a>
+    </div>
+</body>
+</html>

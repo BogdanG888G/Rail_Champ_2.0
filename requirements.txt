@@ -1,0 +1,8 @@
+Django==5.0.2
+asgiref==3.7.2
+packaging==24.0
+pip==23.2.1
+plotly==5.22.0
+sqlparse==0.4.4
+tenacity==8.3.0
+tzdata==2024.1
