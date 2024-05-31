@@ -1,18 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital@0;1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
     <title>Графики железных дорог</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+          margin: 0;
+          font-family: 'JetBrains Mono', monospace;
+          font-optical-sizing: auto;
+          background-color: #1b365d;
+          display: grid;
+          color: white;
+            text-align: center;
+        }
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+    </style>
 </head>
 <body>
-    <h1>Графики железных дорог в комнате: {{ room.name }}</h1>
+    <h1>Баллы железных дорог в комнате: {{ room.name }}</h1>
 
     <div>
         {{ bar_graph_div|safe }}
     </div>
 
-    <a href="{% url 'manage_railway' railway.id %}">
-        <button>Вернуться назад</button>
+    <a href="{% url 'manage_railway' railway.id %}" style="margin-top: 30px;">
+        <button style="background-color: red;
+color: white;
+padding: 8px;
+border-radius: 10px;
+font-family: JetBrains Mono;
+font-size: 11px;">Вернуться назад</button>
     </a>
 </body>
 </html>

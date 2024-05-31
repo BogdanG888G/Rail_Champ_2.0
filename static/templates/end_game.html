@@ -1,18 +1,75 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
 <head>
+    <meta charset="utf-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital@0;1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
     <title>Конец Игры</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+    body {
+          margin: 0;
+          font-family: 'JetBrains Mono', monospace;
+          font-optical-sizing: auto;
+          background-color: #1b365d;
+          display: grid;
+          color: white;
+        text-align: center;
+        }
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+        .txt2 {
+            color: white;
+            font-family: JetBrains Mono;
+            font-size: 28px;
+            font-weight: 400;
+            line-height: 46px;
+            letter-spacing: 0%;
+            text-align: center;
+            margin-left: 250px;
+            margin-top: 50px;
+        }
+        .txt1 {
+            color: white;
+            font-family: JetBrains Mono;
+            font-size: 38px;
+            font-weight: 400;
+            line-height: 46px;
+            letter-spacing: 0%;
+            text-align: center;
+            margin-left: 250px;
+            margin-top: 50px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Конец Игры</h1>
+    <h1 class="txt1">Конец Игры</h1>
     <div>
-        <h2>График изменения бюджета для дороги {{railway.name}}, в комнате {{room.number}}</h2>
+        <h2 class="txt2">График изменения бюджета по ходам для дороги {{railway.name}}, в комнате {{room.number}}</h2>
         {{ graph_div|safe }}
     </div>
 <div>
         <a href="{% url 'start' %}">
-            <button>Вернуться на главную</button>
+            <button style="background-color: red;
+color: white;
+padding: 8px;
+border-radius: 10px;
+font-family: JetBrains Mono;
+font-size: 18px;">Вернуться на главную</button>
         </a>
     </div>
 </body>

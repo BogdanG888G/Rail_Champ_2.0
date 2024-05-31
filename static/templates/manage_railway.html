@@ -21,7 +21,7 @@
         .container {
             margin: 0 auto;
             width: 60%;
-            align: left
+            align: left;
         }
 
         .railway-form {
@@ -37,6 +37,12 @@
         label {
             color: white;
             font-size: 16px;
+            background-color: rgb(2, 67, 143);
+            padding: 5px 10px;
+            display: inline-block;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            float: left;
         }
 
         input[type='range'] {
@@ -78,13 +84,6 @@
             text-align: center;
         }
 
-        .btn-next-move:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
-
-
-
         .tit {
             color: rgb(255, 255, 255);
             font-family: JetBrains Mono;
@@ -116,7 +115,7 @@
 
         h2.indicator-list {
             padding-left: 20px;
-            color:red;
+            color: red;
             list-style: none;
         }
 
@@ -136,12 +135,12 @@
 <div class="menu">
     <a><p>Доступные функции</p></a>
     <a href="{% url 'manage_railway' railway.id %}"><div class="colors">Информация о дороге</div></a>
-    <a href="{% url 'rules_in_game' %}">Правила</a><br />
+    <a href="{% url 'rules_in_game' railway_id=railway.id %}">Правила</a> <br />
     <a href="{% url 'room_railways_graph' room.id %}">Статистика</a>
 </div>
 <div class="container">
     <div class="tit">{{ railway.name }}, комната {{ room.number }}</div>
-
+    <p></p>
     <div class="txt1">Текущий ход: {{ railway.current_move }}</div>
     <form method="post" class="railway-form">
         {% csrf_token %}
@@ -154,7 +153,6 @@
 
     <p></p>
     <!-- Добавляем кнопку для перехода на страницу с графиками -->
-    
 
     <!-- Раздел с показателями -->
     {% if calculated %}

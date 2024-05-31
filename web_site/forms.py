@@ -16,73 +16,72 @@ class RailwayChoiceForm(forms.Form):
 
 
 class RailwayManageForm(forms.ModelForm):
+    maks_kolvo_reisov_gryz = forms.IntegerField(
+        label='Количество рейсов грузовых поездов',
+        min_value=0, max_value=1000000000, required=True,
+        widget=forms.NumberInput(attrs={
+            'style': 'background-color: rgb(2, 67, 143); border-radius: 10px; width: 320px; padding: 10px; color: white; font-size: 15px; margin-top: 10px; margin-left: -200px'
+        })
+    )
+
+    maks_kolvo_reisov_loko = forms.IntegerField(
+        label='Количество рейсов локомотивов',
+        min_value=0, max_value=100000000, required=True,
+        widget=forms.NumberInput(attrs={
+            'style': 'background-color: rgb(2, 67, 143); border-radius: 10px; width: 320px; padding: 10px; color: white; font-size: 15px; margin-top: 10px;margin-left: -240px'
+        })
+    )
+
     new_gryzovye_vagoni = forms.IntegerField(
         label='Новые грузовые вагоны (штук)',
         min_value=0, max_value=2000, required=True,
         widget=forms.NumberInput(attrs={
-            'type': 'range', 'step': '1', 'value': '0', 'style': 'width: 320px;'
+            'type': 'range', 'step': '1', 'value': '0', 'style': 'width: 320px; margin-left:-250px;'
         })
     )
+
     new_pass_vagoni = forms.IntegerField(
         label='Новые пассажирские вагоны (штук)',
         min_value=0, max_value=2000, required=True,
         widget=forms.NumberInput(attrs={
-            'type': 'range', 'step': '1', 'value': '0', 'style': 'width: 320px;'
+            'type': 'range', 'step': '1', 'value': '0', 'style': 'width: 320px; margin-left:-250px;'
         })
     )
-    #new_lokomotivi = forms.IntegerField(
-    #    label='Новые локомотивы',
-    #    min_value=0, max_value=2000, required=True,
-    #    widget=forms.NumberInput(attrs={
-    #        'type': 'range', 'step': '1', 'value': '0', 'style': 'width: 320px;'
-    #    })
-    #)
+
     new_zarplata_sotrudnikov = forms.IntegerField(
         label='Зарплата сотрудников (тысячи рублей)',
         min_value=0, required=True,
         widget=forms.NumberInput(attrs={
-            'style': 'background-color: rgb(2, 67, 143); border-radius: 10px; width: 320px; padding: 10px; color: white; font-size: 15px; margin-top: 10px;'
+            'style': 'background-color: rgb(2, 67, 143); border-radius: 10px; width: 320px; padding: 10px; color: white; font-size: 15px; margin-top: 10px; margin-left: -200px;'
         })
     )
     repair_puti = forms.BooleanField(
         label='Ремонт путей', required=False,
         widget=forms.CheckboxInput(attrs={
-            'style': 'margin-top: 10px;'
+            'style': 'margin-top: 10px;margin-left: -730px;'
         })
     )
     repair_vagoni = forms.BooleanField(
         label='Ремонт вагонов', required=False,
         widget=forms.CheckboxInput(attrs={
-            'style': 'margin-top: 10px;'
+            'style': 'margin-top: 10px; margin-left: -730px;'
         })
     )
     repair_loko = forms.BooleanField(
         label='Ремонт локомотивов', required=False,
         widget=forms.CheckboxInput(attrs={
-            'style': 'margin-top: 10px;'
+            'style':'margin-left: -680px;'
         })
     )
     maks_kolvo_reisov = forms.IntegerField(
         label='Количество рейсов пассажирских поездов',
         min_value=0, max_value=100000000, required=True,
         widget=forms.NumberInput(attrs={
-            'style': 'background-color: rgb(2, 67, 143); border-radius: 10px; width: 320px; padding: 10px; color: white; font-size: 15px; margin-top: 10px;'
+            'style': 'background-color: rgb(2, 67, 143); border-radius: 10px; width: 320px; padding: 10px; color: white; font-size: 15px; margin-top: 10px; margin-left: -180px'
         })
     )
-    maks_kolvo_reisov_gryz = forms.IntegerField(
-        label='Количество рейсов грузовых поездов',
-        min_value=0, max_value=1000000000, required=True,
-        widget=forms.NumberInput(attrs={
-            'style': 'background-color: rgb(2, 67, 143); border-radius: 10px; width: 320px; padding: 10px; color: white; font-size: 15px; margin-top: 10px;'
-        })
-    )
-    maks_kolvo_reisov_loko = forms.IntegerField(
-        label='Количество рейсов локомотивов',
-        min_value=0, max_value=100000000, required=True,
-        widget=forms.NumberInput(attrs={
-            'style': 'background-color: rgb(2, 67, 143); border-radius: 10px; width: 320px; padding: 10px; color: white; font-size: 15px; margin-top: 10px;'
-        })
-    )
+
+
 
     class Meta:
         model = Railways

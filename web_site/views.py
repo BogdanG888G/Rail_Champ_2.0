@@ -762,7 +762,7 @@ def manage_railway(request, railway_id):
                     'current_move': current_move,
                 })
             elif 'next_move' in request.POST:
-                if current_move < 60:
+                if current_move < 61:
                     if process_next_move(railway):  # Проверка, удалось ли обработать следующий ход
                         return redirect('manage_railway', railway_id=railway.id)
                     else:
@@ -810,18 +810,47 @@ def room_railways_graph(request, room_id):
     budgets = [r.budget for r in railways_in_room_list]
     current_moves = [r.current_move for r in railways_in_room_list]
 
-    # Создание столбчатой диаграммы
+    # Создание столбчатой диаграммы с фиолетовыми столбцами и белым текстом
     bar_data = go.Bar(
         x=budgets,
         y=names,
         orientation='h',
         text=[f'Дорога: {r.name}<br>Баллы: {r.total_score}<br>Ход: {r.current_move}' for r in railways_in_room_list],
-        hoverinfo='text'
+        hoverinfo='text',
+        marker=dict(
+            color='rgba(148, 0, 211, 0.6)',  # Фиолетовый цвет столбцов
+            line=dict(
+                color='rgba(148, 0, 211, 1.0)',  # Цвет границы столбцов
+                width=1
+            )
+        ),
+        textfont=dict(
+            color='white'  # Белый цвет текста
+        )
     )
     layout = go.Layout(
-        title='Баллы железных дорог в комнате',
-        xaxis_title='Баллы',
-        yaxis_title='Железная дорога'
+        xaxis=dict(
+            title='Баллы',  # Подпись оси X
+            titlefont=dict(
+                color='white'  # Белый цвет подписи оси X
+            ),
+            tickfont=dict(
+                color='white'  # Белый цвет текста значений по оси X
+            ),
+        ),
+        yaxis=dict(
+            title='Железная дорога',  # Подпись оси Y
+            titlefont=dict(
+                color='white'  # Белый цвет подписи оси Y
+            ),
+            tickfont=dict(
+                color='white'  # Белый цвет текста значений по оси Y
+            ),
+            tickvals=names,  # Значения на оси Y
+            tickmode='array',  # Режим отображения значений  # Установка максимального значения по оси Y
+        ),
+        plot_bgcolor='rgba(0, 0, 0, 0)',  # Прозрачный фон
+        paper_bgcolor='rgba(0, 0, 0, 0)'  # Прозрачный фон
     )
     fig = go.Figure(data=[bar_data], layout=layout)
     bar_graph_div = pyo.plot(fig, output_type='div')
@@ -850,22 +879,39 @@ def end_game(request, railway_id):
     railway = get_object_or_404(Railways, id=railway_id)
     room = railway.room
 
-    moves = list(range(1, 61))
+    moves = list(range(1, 60))
     budgets = [getattr(railway, f'move_{i}', 0) for i in moves]
-    print(budgets)
     # Создание графика
     fig = go.Figure()
-    fig.add_trace(go.Scatter(x=moves, y=budgets, mode='lines', name='Бюджет'))
+    fig.add_trace(go.Scatter(x=moves, y=budgets, mode='lines', name='Бюджет', line=dict(color='purple', width=6)))
     fig.update_layout(
-        title='Изменение бюджета по ходам',
-        xaxis_title='Ход',
-        yaxis_title='Баллы'
+        xaxis_title='Номер хода',
+        yaxis_title='Баллы',
+        plot_bgcolor='rgba(0, 0, 0, 0)',  # Прозрачный фон
+        paper_bgcolor='rgba(0, 0, 0, 0)',  # Прозрачный фон
+        font=dict(color='white'),  # Белый цвет текста
+        title=dict(
+            font=dict(color='white')  # Белый цвет заголовка
+        ),
+        xaxis=dict(
+            title=dict(
+                font=dict(color='white')  # Белый цвет подписи оси X
+            ),
+            tickfont=dict(
+                color='white'  # Белый цвет текста значений по оси X
+            )
+        ),
+        yaxis=dict(
+            title=dict(
+                font=dict(color='white')  # Белый цвет подписи оси Y
+            ),
+            tickfont=dict(
+                color='white'  # Белый цвет текста значений по оси Y
+            )
+        )
     )
     graph_div = pyo.plot(fig, output_type='div')
-
-    # Удаление железной дороги из базы данных
     railway.delete()
-
     return render(request, 'end_game.html', {'graph_div': graph_div, 'railway': railway, 'room':room})
 
 
@@ -975,5 +1021,12 @@ def rules(request):
 
 def maps(request):
     return render(request, 'maps.html')
-def rules_in_game(request):
-    return render(request, 'rules_in_game.html')
+def rules_in_game(request, railway_id):
+    railway = get_object_or_404(Railways, id=railway_id)
+    room = railway.room  # Если вам нужно использовать room в шаблоне
+
+    return render(request, 'rules_in_game.html', {
+        'railway': railway,
+        'room': room,
+        'railway_id': railway_id,
+    })

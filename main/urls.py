@@ -15,6 +15,6 @@ urlpatterns = [
     path('end_game/<int:railway_id>/', end_game, name='end_game'),
     path('manage_railway/<int:railway_id>/', manage_railway, name='manage_railway'),
     path('room_railways_graph/<int:room_id>/', room_railways_graph, name='room_railways_graph'),
-    path('rules_in_game/', rules_in_game, name='rules_in_game'),
-path('room_railways_graph/<int:room_id>/', room_railways_graph_view, name='room_railways_graph'),
+    path('room_railways_graph/<int:room_id>/', room_railways_graph_view, name='room_railways_graph'),
+    path('rules_in_game/<int:railway_id>/', rules_in_game, name='rules_in_game'),
 ]

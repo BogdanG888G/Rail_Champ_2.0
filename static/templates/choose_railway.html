@@ -9,27 +9,61 @@
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital@0;1&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <title>Page 2</title>
+    <style>
+        .txt {
+            text-align: center; /* Выравнивание текста по центру */
+            margin-top: 20px; /* Отступ сверху для выравнивания по центру */
+            font-size: 24px; /* Размер текста */
+            font-weight: bold; /* Жирный шрифт */
+        }
+        .txt2 {
+            color: white;
+            font-family: JetBrains Mono;
+            font-size: 28px;
+            font-weight: 400;
+            line-height: 46px;
+            letter-spacing: 0%;
+            text-align: center;
+            margin-left: 250px;
+            margin-top: 50px;
+        }
+    </style>
 </head>
 <body>
 <div class="menu">
     <a><p>Навигация</p></a>
-    <a href="{% url 'start' %}"><div class="colors">Главная страница</div></a>
+    <a href="{% url 'start' %}">Главная страница</a>
     <a href="{% url 'rules' %}">Правила</a>
-    <a href="{% url 'check_room_existence' %}">Начать играть</a>
+    <a href="{% url 'check_room_existence' %}"><div class="colors">Начать играть</div></a>
     <div class="rail">Железные дороги</div>
     <div class="change">Выбрать дорогу</div>
     <div class="form-container">
         <form method="post" class="railway-form">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Выбрать</button>
+            <button type="submit" style="background-color: red;
+color: white;
+padding: 8px;
+border-radius: 10px;
+font-family: JetBrains Mono;
+font-size: 11px;">Выбрать</button>
         </form>
     </div>
 </div>
+
 {% if form.is_valid and form.cleaned_data.selected_railway %}
-<div class="txt">{{ form.cleaned_data.selected_railway }}</div>
-<img src="{% static 'images/rail.png' %}" alt="Railway image">
+
+<!-- Вывод названия железной дороги -->
+<div class="txt">{{ railway.name }}</div>
+
 <a href="{% url 'manage_railway' railway.id %}" class="butn">Начать игру</a>
+
 {% endif %}
+
+<!-- Пример вывода другой информации -->
+<div class="txt2">
+    <p>Выберите в боковом меню железную дорогу</p>
+</div>
+<img src="{% static 'img/zhd-250_150.jpg' %}" alt="Railway image">
 </body>
 </html>
